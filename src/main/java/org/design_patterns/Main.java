@@ -5,6 +5,12 @@ import org.design_patterns.bridge.abstraction.Form;
 import org.design_patterns.bridge.abstraction.Square;
 import org.design_patterns.bridge.implementation.Blue;
 import org.design_patterns.bridge.implementation.Red;
+import org.design_patterns.composite.DeliveryService;
+import org.design_patterns.composite.composite.CompositeBox;
+import org.design_patterns.composite.leaf.Book;
+import org.design_patterns.composite.leaf.VideoGame;
+
+
 
 public class Main {
 
@@ -18,7 +24,27 @@ public class Main {
         c3.draw();
     }
 
+    public static void composite() {
+        DeliveryService ds = new DeliveryService();
+        ds.setupOrder(
+                new CompositeBox(
+                        new VideoGame("1",100)
+                ),
+                new CompositeBox(
+                        new CompositeBox(
+                                new Book("2", 200),
+                                new Book("3", 300)
+                        ) ,
+                        new VideoGame("4", 400),
+                        new VideoGame("5", 500)
+                )
+
+        );
+        System.out.println(ds.calculateOrderPrice());
+    }
+
     public static void main(String[] args) {
-        bridge();
+//        bridge();
+        composite();
     }
 }
