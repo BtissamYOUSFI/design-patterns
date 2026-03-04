@@ -9,7 +9,7 @@ import org.design_patterns.composite.DeliveryService;
 import org.design_patterns.composite.composite.CompositeBox;
 import org.design_patterns.composite.leaf.Book;
 import org.design_patterns.composite.leaf.VideoGame;
-
+import org.design_patterns.facade.CinemaFacade;
 
 
 public class Main {
@@ -43,8 +43,14 @@ public class Main {
         System.out.println(ds.calculateOrderPrice());
     }
 
+    public static void facade () {
+        CinemaFacade cinema= new CinemaFacade();
+        cinema.watchMovie("Inception");
+    }
+
     public static void main(String[] args) {
 //        bridge();
-        composite();
+//        composite();
+        facade();
     }
 }
